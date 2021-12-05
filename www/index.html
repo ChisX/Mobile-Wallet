@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Metadata -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval'; object-src 'self'">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta charset="utf-8">
+    <title>Arcane Android Wallet</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="color-scheme" content="light dark">
+
+    <!-- Scripts -->
+    <script src="./scripts/libraries/jquery-3.5.1.min.js" defer></script>
+    <script src="./scripts/libraries/bchmainet-0.3.1.js" defer></script>
+    <script src="./scripts/entry.js" defer></script>
+  </head>
+  <body>
+    <section id="entry">
+      <h3>Choose your Currency</h3><br>
+      <div class="currencies">
+        <button id="choice-btc" class="btn btn-warning currency_choice" value="btc">Bitcoin</button>
+        <button id="choice-eth" class="btn btn-warning currency_choice" value="eth">Ethereum</button>
+        <button id="choice-bch" class="btn btn-warning currency_choice" value="bch">BitcoinCash</button>
+        <button id="choice-xmr" class="btn btn-warning currency_choice" value="xmr">Monero</button>
+      </div>
+    </section>
+  
+    <section id="wallet_area">
+      <div class="cover-container d-flex flex-column">
+        <!-- Nav Bar -->
+        <header class="masthead mb-auto"></header>
+      
+        <!-- Main Wallet Area -->
+        <main role="main" class="inner cover">
+          <h1 id="foretag" class="cover-heading"></h1>
+          <p class="lead">
+            <button id="create-wallet" class="btn btn-warning">Create New Wallet</button>
+            <button id="import-wallet" class="btn btn-warning">Import Old Wallet</button>
+            <button id="return-select" class="btn btn-warning">Return to Selection</button>
+          </p>
+      
+          <!-- Dynamically Generated Content -->
+          <div class="container">
+            <!-- Alert Banner -->
+            <div id="alert-msg"></div>
+            
+            <!-- New Wallet Form -->
+            <div id="new-wallet" style="display: none">
+              <form id="new-wallet-form">
+                <div class="form-group fg-btc">
+                  <input type="radio" name="network" value="mainnet"> Main Net <br>
+                  <input type="radio" name="network" value="testnet"> Test Net <br><br>
+                  <button type="submit" class="btn btn-warning">Create</button>
+                </div>
+  
+                <div class="form-group fg-eth">
+                  <input type="radio" name="network" value="main"> Main Net <br>
+                  <input type="radio" name="network" value="rinkeby"> Rinkeby Test Net <br>
+                  <input type="radio" name="network" value="ropsten"> Ropsten Test Net <br>
+                  <input type="radio" name="network" value="kovan"> Kovan Test Net <br>
+                  <input type="radio" name="network" value="goerli"> Goerli Test Net <br><br>
+                  <button type="submit" class="btn btn-warning">Create</button>
+                </div>
+  
+                <div class="form-group fg-bch">
+                  <input type="text" id="WalletName" placeholder="Label your Wallet" class="form-control"> <br><br>
+                  <button type="submit" class="btn btn-warning" onclick="MakeBCHWallet()">Create</button>
+                </div>
+  
+                <div class="form-group fg-xmr">
+                  <h3>Make Address for receiving Monero</h3>
+                  <div id="IntAddress" class="form-control" style="width: 80%; display: inline-block;" spellcheck="false"></div>
+                  <button type="button" class="btn btn-warning" id="MakeXMRWallet">Create</button>
+                </div>
+              </form>            
+            </div>
+            
+            <!-- Import Wallet Form -->
+            <div id="old-wallet" style="display: none">
+              <form id="old-wallet-form">
+                <div class="form-group fg-btc">
+                  <input type="text" name="cipher" placeholder="Enter your private key" class="form-control"> <br><br>
+                  <button type="submit" class="btn btn-warning">Unlock</button>
+                </div>
+                <div class="form-group fg-eth">
+                  <input type="text" name="key" placeholder="Enter your private key" class="form-control">
+                  <input type="text" name="net" placeholder="Enter the relevant network" class="form-control"> <br><br>
+                  <button type="submit" class="btn btn-warning">Unlock</button>
+                </div>
+                <div class="form-group fg-bch">
+                  <input type="text" name="label" placeholder="Enter your wallet label" class="form-control"> <br><br>
+                  <button type="submit" class="btn btn-warning" onclick="MakeBCHWallet()">Unlock</button>
+                </div>
+                <div class="form-group fg-xmr">
+                  <input type="text" name="label" placeholder="Enter your wallet label" class="form-control"> <br><br>
+                  <button type="submit" class="btn btn-warning">Unlock</button>
+                </div>
+              </form>
+            </div>
+      
+            <!-- Area for wallet info and sending TX -->
+            <div id="output-area"></div>
+            <div class="filler-area"></div>
+          </div>
+        </main>
+  
+        <footer class="mastfoot mt-auto">
+          <div class="inner"></div>
+        </footer>
+      </div>
+    </section>
+
+    <script src="cordova.js"></script>
+  </body>
+</html>

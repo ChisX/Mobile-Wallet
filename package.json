@@ -1,0 +1,52 @@
+{
+  "name": "arcanewallet.mobile",
+  "displayName": "arcanewallet",
+  "version": "1.0.0",
+  "description": "The Arcane multicurrency wallet for mobile.",
+  "main": "entry.js",
+  "scripts": {
+    "test": "cordova run browser",
+    "build": "cordova build"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Arcane Corporations",
+  "license": "ISCS",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bigi": "^1.4.2",
+    "bs58": "^4.0.1",
+    "eccrypto": "^1.1.5",
+    "ecurve": "^1.0.6",
+    "ethereumjs-tx": "^2.1.2",
+    "get-random-values": "^1.2.2",
+    "gulp-cli": "^2.3.0",
+    "monero-rpc": "^0.5.0",
+    "popper.js": "^1.16.1",
+    "request": "^2.88.2",
+    "web3": "^1.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browserify": "^16.5.2",
+    "cordova-android": "^9.1.0",
+    "cordova-browser": "^6.0.0",
+    "cordova-ios": "^6.2.0",
+    "cordova-plugin-whitelist": "^1.3.4",
+    "gulp": "^4.0.2",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {}
+    },
+    "platforms": [
+      "browser",
+      "android",
+      "ios"
+    ]
+  }
+}
